@@ -9,7 +9,6 @@ Thailand exports ฿1.1 trillion in food products to 50+ markets — but trade i
 ```mermaid
 flowchart LR
     KIN[Kinesis] --> SPS[Snowpipe Streaming]
-    SP --> RAW[RAW Tables]
     SPS --> RAW
     RAW --> DT[Dynamic Tables]
     DT --> ML[ML Functions]
