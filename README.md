@@ -123,7 +123,7 @@ Industry research and Snowflake customer outcomes:
 - **AI-powered trade intelligence accelerates market entry decisions by 60% and reduces research costs by 40%** — [McKinsey Global Trade](https://www.mckinsey.com/featured-insights/trade)
 - **Thailand has 14 active FTAs covering 80%+ of its food export markets** — [Thai Ministry of Commerce](https://www.moc.go.th/en/)
 - **Real-time trade barrier monitoring prevents $5-15M in annual compliance penalties per exporter** — [WTO Trade Facilitation](https://www.wto.org/english/tratop_e/tradfa_e/tradfa_e.htm)
-- **Kraft Heinz** (Snowflake customer): built a unified data platform on Snowflake powering supply chain and demand forecasting across 200+ brands -- [snowflake.com/customers/kraft-heinz](https://www.snowflake.com/en/customers/all-customers/case-study/kraft-heinz/)
+- **Foodics** (Snowflake customer): built a unified data platform on Snowflake powering supply chain and demand forecasting across 200+ brands -- [snowflake.com/customers/foodics](https://www.snowflake.com/en/customers/all-customers/case-study/foodics/)
 
 ## Key Demo Numbers
 
