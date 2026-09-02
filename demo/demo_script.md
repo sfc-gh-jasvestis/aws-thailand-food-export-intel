@@ -1,109 +1,82 @@
-# Demo Script: Export Market Intelligence
-## ~4-Minute Recorded Walkthrough
-**Format**: Screen recording with voiceover
-**Target**: Customer meeting / booth loop / social share
-**Narrative**: "Snowflake analyzes trade data, extracts market signals from unstructured sources, classifies export opportunities, and generates AI briefs — replacing fragmented trade intelligence with unified analytics"
-**Demo Mode**: Open app with `?demo=true` for presenter notes
+# Export Market Intelligence
 
----
+**Thailand - Food & Agribusiness**
+Use case: Export Intelligence & Market Analysis
 
-## Two Personas
+> AI-powered export market intelligence for Thai food companies — Comprehend extracts trade signals, AI_CLASSIFY categorizes market opportunities, and Cortex Complete generates actionable export briefs for 50+ destination markets.
 
-| Persona | Role | Tool | What they care about |
-|---|---|---|---|
-| **Apinya Leelanantakul** | VP International Trade | React App (SPCS) | Export revenue by market, trade barrier changes, market diversification, competitive positioning |
-| **Piyawat Tongsomchai** | Trade Intelligence Analyst | Amazon QuickSight | Trade flow analysis, tariff changes, competitor movements, regulatory updates |
+## Why Snowflake
 
----
+Snowflake analyzes trade data, extracts market signals from unstructured sources, classifies export opportunities, and generates AI briefs — replacing fragmented trade intelligence with unified analytics
 
-## What's Built
+- **AI_EXTRACT + AI_CLASSIFY on trade signals** - Only demo extracting and classifying trade intelligence from unstructured news in real time
+- **Market opportunity scoring** - Composite attractiveness scoring combining tariffs, demand growth, competitive gap, and FTA benefits
+- **Cortex Complete for strategic briefs** - AI-generated market entry and response briefs with supporting data citations
+- **Thai food export context** - Realistic trade flows across 50+ markets with Thai HS codes and product categories
+- **Competitive position tracking (Thailand vs Vietnam, India)** - ML.ANOMALY_DETECTION on market share shifts identifying competitive inflection points
+- **FTA impact analysis** - Quantified tariff advantage calculation from Thailand's 14 active free trade agreements
 
-| Layer | Component | Detail |
+## What is deployed
+
+| | |
+|---|---|
+| Database | `THAILAND_FOOD_EXPORT_INTEL` |
+| Service | `THAILAND_FOOD_EXPORT_INTEL_APP` |
+| Compute pool | `SEA_DEMOS_THAILAND_POOL` |
+| Dimension table | `RAW.THAI_EXPORT_CONTEXT` (20 rows) |
+| Fact table | `RAW.EXPORT_TRANSACTIONS` (250,000 rows, 90 days) |
+| Curated layer | `CURATED.PERFORMANCE_SUMMARY`, `CURATED.TREND_ANALYSIS`, `CURATED.KPI_SUMMARY` |
+| Currency | THB (฿) |
+
+Regions in play: Bangkok, Chonburi, Rayong, Chiang Mai, Songkhla
+Segments: EU Market, China Market, Japan Market, ASEAN Market
+
+Dynamic tables are created suspended and refreshed on demand:
+
+```bash
+./refresh_demo_data.sh THAILAND_FOOD_EXPORT_INTEL
+```
+
+## KPI cards
+
+Every card below is served live from `CURATED.KPI_SUMMARY`. The app keeps the
+original literal as a fallback, so it still renders if Snowflake is unreachable.
+
+| Card | Value | Backed by |
 |---|---|---|
-| **RAW** | 8 tables | EXPORT_TRANSACTIONS (350000), TRADE_SIGNALS (80000), TARIFF_DATABASE (25000), COMPETITOR_EXPORTS (200000), MARKET_REGULATIONS (500), BUYER_CONTACTS (3000), FTA_AGREEMENTS (45), THAI_EXPORT_CONTEXT (10) |
-| **CURATED** | 4 Dynamic Tables | MARKET_OPPORTUNITY_SCORES, EXPORT_TRENDS, TRADE_BARRIER_TRACKER, COMPETITIVE_POSITION |
-| **ML** | ML.FORECAST + ML.ANOMALY_DETECTION | Forecasting + anomaly detection |
-| **AI** | AI_EXTRACT, AI_CLASSIFY, COMPLETE | Classification + extraction |
-| **Search** | Cortex Search | 500 documents indexed |
-| **Agent** | EXPORT_INTEL_AGENT | Semantic View + Search tools |
+| Export Revenue (MTD) | `฿4.2B` | total across Thai Export Context |
+| Markets at Risk | `3` | average per event |
+| Compliance Flags | `8` | average per event |
+| Active Shipments | `1,247` | total across Thai Export Context |
+| Japan Demand Index | `↑ 8.2%` | average per event |
+| EU Rejection Rate | `0.3%` | average per event |
+| China Tariff Impact | `-฿120M` | total across Thai Export Context |
 
 
----
+## Demo flow
 
-## The Story
+1. Executive Cockpit
+2. Market Opportunities
+3. Competitive & Barriers
+4. Ask AI
+5. Architecture & Data
 
-Thailand exports ฿1.1 trillion in food products to 50+ markets — but trade intelligence is fragmented across government databases, news sources, and competitor reports. AI-native analytics extracts signals, classifies opportunities, and generates strategic briefs — turning information overload into actionable export strategy.
+## Talking points
 
----
+- **฿1.1T** - Thai food exports across 50+ destination markets
+- **7 barriers** - new trade barriers detected this quarter affecting ฿45B
+- **12 opportunities** - high-potential market-product pairs identified (score > 85)
+- **80K signals** - trade news items analyzed by AI_EXTRACT + AI_CLASSIFY
+- **50+ markets** - monitored for opportunities and threats
+- **350K transactions** - export records analyzed for pattern detection
 
-## Script
+## Business impact
 
-### [0:00–0:45] EXECUTIVE COCKPIT
-
-**Show**: Executive Cockpit tab
-
-> "Thai food exports: ฿1.1T this year. Top markets: Japan (18%), USA (12%), China (11%), EU (15%)."
-
-**Action**: Point at export revenue by market treemap
-
-### [0:45–1:30] MARKET OPPORTUNITIES
-
-**Show**: Market Opportunities tab
-
-> "AI scores 50+ markets by attractiveness: tariff advantage, demand growth, competitive gap."
-
-**Action**: Show opportunity scoring matrix
-
-### [1:30–2:15] COMPETITIVE & BARRIERS
-
-**Show**: Competitive & Barriers tab
-
-> "Vietnam shrimp exports to Japan up 22% — taking Thai market share. ML detects inflection point."
-
-**Action**: Show Thailand vs Vietnam market share trend
-
-### [2:15–3:00] ASK AI
-
-**Show**: Ask AI tab
-
-> "Apinya asks: 'Where should we focus market development next quarter?'"
-
-**Action**: Type: 'Top market development priorities for next quarter'
-
-### [3:00–3:45] ARCHITECTURE & DATA
-
-**Show**: Architecture & Data tab
-
-> "Seven Snowflake capabilities, six AWS services."
-
-**Action**: Walk through architecture diagram
-
+- Thailand's food exports reached ฿1.1 trillion in 2023, ranking 13th globally (National Food Institute Thailand)
+- AI-powered trade intelligence accelerates market entry decisions by 60% and reduces research costs by 40% (McKinsey Global Trade)
+- Thailand has 14 active FTAs covering 80%+ of its food export markets (Thai Ministry of Commerce)
+- Real-time trade barrier monitoring prevents $5-15M in annual compliance penalties per exporter (WTO Trade Facilitation)
 
 ---
-
-## Key Demo Differentiators
-
-1. **AI_EXTRACT + AI_CLASSIFY on trade signals** — Only demo extracting and classifying trade intelligence from unstructured news in real time
-2. **Market opportunity scoring** — Composite attractiveness scoring combining tariffs, demand growth, competitive gap, and FTA benefits
-3. **Cortex Complete for strategic briefs** — AI-generated market entry and response briefs with supporting data citations
-4. **Thai food export context** — Realistic trade flows across 50+ markets with Thai HS codes and product categories
-5. **Competitive position tracking (Thailand vs Vietnam, India)** — ML.ANOMALY_DETECTION on market share shifts identifying competitive inflection points
-6. **FTA impact analysis** — Quantified tariff advantage calculation from Thailand's 14 active free trade agreements
-
-
----
-
-## Demo Prep Checklist
-
-### Data Verification
-- [ ] `SELECT COUNT(*) FROM EXPORT_INTELLIGENCE.RAW.EXPORT_TRANSACTIONS` → 350000
-- [ ] `SELECT COUNT(*) FROM EXPORT_INTELLIGENCE.RAW.TRADE_SIGNALS` → 80000
-- [ ] `SELECT COUNT(*) FROM EXPORT_INTELLIGENCE.CURATED.MARKET_OPPORTUNITY_SCORES WHERE SCORE > 85` → 12
-
-### ML Model Verification
-- [ ] `SELECT COUNT(*) FROM EXPORT_INTELLIGENCE.ML.EXPORT_DEMAND_FORECAST_RESULTS` → >0
-- [ ] `SELECT SUM(CASE WHEN IS_ANOMALY THEN 1 ELSE 0 END) FROM EXPORT_INTELLIGENCE.ML.TRADE_SHIFT_RESULTS` → >=5
-
-### AI/Agent Verification
-- [ ] `SELECT COUNT(*) FROM EXPORT_INTELLIGENCE.AI.CLASSIFIED_TRADE_SIGNALS` → 80000
-
+Generated from `generator/demo_specs/aws-thailand-food-export-intel.json`. Do not hand-edit: run
+`python3 generator/gen_repo_docs.py aws-thailand-food-export-intel` instead.
