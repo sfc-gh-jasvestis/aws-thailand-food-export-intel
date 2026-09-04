@@ -53,6 +53,7 @@ export default function HomePage() {
         <div className="lg:col-span-1">
           <GeoMap
             country="thailand"
+            labels={{ entity: 'Buyers', event: 'Export Transactions', alert: 'Trade Risks' }}
             regions={data?.regions}
             markers={[{"label": "Laem Chabang", "value": "Export port: 42K MT/mo", "color": "blue", "size": "lg"}, {"label": "Bangkok", "value": "HQ & inspection", "color": "blue", "size": "md"}, {"label": "Surat Thani", "value": "Seafood processing", "color": "green", "size": "md"}, {"label": "Chiang Mai", "value": "Fresh produce hub", "color": "green", "size": "sm"}, {"label": "Hat Yai", "value": "Border trade: MY", "color": "amber", "size": "sm"}]}
             routes={[{"from": "Surat Thani", "to": "Laem Chabang", "color": "#29B5E8"}, {"from": "Chiang Mai", "to": "Bangkok", "color": "#10B981"}]}
@@ -83,8 +84,13 @@ export default function HomePage() {
         columns={[
           { key: 'id', header: 'Rank' },
           { key: 'name', header: 'Buyer' },
+          { key: 'region', header: 'Region' },
           { key: 'status', header: 'Risk Level' },
-          { key: 'value', header: 'Volume (T)' },
+          { key: 'm1', header: 'Volume (T)' },
+          { key: 'm2', header: 'Compliance Flags' },
+          { key: 'm3', header: 'Japan Demand Index' },
+          { key: 'events', header: 'Export Transactions' },
+          { key: 'alerts', header: 'Trade Risks' },
         ]}
         data={data?.entities || []}
         title="Top Export Partners"
