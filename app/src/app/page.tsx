@@ -53,6 +53,7 @@ export default function HomePage() {
         <div className="lg:col-span-1">
           <GeoMap
             country="thailand"
+            regions={data?.regions}
             markers={[{"label": "Laem Chabang", "value": "Export port: 42K MT/mo", "color": "blue", "size": "lg"}, {"label": "Bangkok", "value": "HQ & inspection", "color": "blue", "size": "md"}, {"label": "Surat Thani", "value": "Seafood processing", "color": "green", "size": "md"}, {"label": "Chiang Mai", "value": "Fresh produce hub", "color": "green", "size": "sm"}, {"label": "Hat Yai", "value": "Border trade: MY", "color": "amber", "size": "sm"}]}
             routes={[{"from": "Surat Thani", "to": "Laem Chabang", "color": "#29B5E8"}, {"from": "Chiang Mai", "to": "Bangkok", "color": "#10B981"}]}
             title="Geographic Overview"
@@ -69,7 +70,7 @@ export default function HomePage() {
           title="Export Volume by Destination (Weekly)"
         />
         <Chart
-          data={data?.categories || [{ category: 'North', count: 82 }, { category: 'Central', count: 74 }, { category: 'South', count: 91 }, { category: 'Highland', count: 68 }, { category: 'Coastal', count: 77 }]}
+          data={data?.categoryMetric || [{ category: 'North', count: 82 }, { category: 'Central', count: 74 }, { category: 'South', count: 91 }, { category: 'Highland', count: 68 }, { category: 'Coastal', count: 77 }]}
           type="bar"
           xKey="category"
           yKeys={[{ key: 'count', name: '฿M' }]}
